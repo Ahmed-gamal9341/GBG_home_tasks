@@ -1,0 +1,15 @@
+E:\GBG\bin\Debug\net10.0\GBG.exe
+E:\GBG\bin\Debug\net10.0\GBG.deps.json
+E:\GBG\bin\Debug\net10.0\GBG.runtimeconfig.json
+E:\GBG\bin\Debug\net10.0\GBG.dll
+E:\GBG\bin\Debug\net10.0\GBG.pdb
+E:\GBG\obj\Debug\net10.0\GBG.GeneratedMSBuildEditorConfig.editorconfig
+E:\GBG\obj\Debug\net10.0\GBG.AssemblyInfoInputs.cache
+E:\GBG\obj\Debug\net10.0\GBG.AssemblyInfo.cs
+E:\GBG\obj\Debug\net10.0\GBG.csproj.CoreCompileInputs.cache
+E:\GBG\obj\Debug\net10.0\GBG.sourcelink.json
+E:\GBG\obj\Debug\net10.0\GBG.dll
+E:\GBG\obj\Debug\net10.0\refint\GBG.dll
+E:\GBG\obj\Debug\net10.0\GBG.pdb
+E:\GBG\obj\Debug\net10.0\GBG.genruntimeconfig.cache
+E:\GBG\obj\Debug\net10.0\ref\GBG.dll

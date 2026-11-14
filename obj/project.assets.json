@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\GBG\\GradeCalculator\\GradeCalculator.csproj",
-      "projectName": "GradeCalculator",
-      "projectPath": "E:\\GBG\\GradeCalculator\\GradeCalculator.csproj",
+      "projectUniqueName": "E:\\GBG\\GBG.csproj",
+      "projectName": "GBG",
+      "projectPath": "E:\\GBG\\GBG.csproj",
       "packagesPath": "C:\\Users\\Gamal\\.nuget\\packages\\",
-      "outputPath": "E:\\GBG\\GradeCalculator\\obj\\",
+      "outputPath": "E:\\GBG\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
