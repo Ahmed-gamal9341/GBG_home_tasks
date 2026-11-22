@@ -1,88 +1,40 @@
-﻿abstract class vehicle
+﻿public class Order
 {
-    public string Brand { get; set; }
-    public string Model { get; set; }
-    public abstract double price { get; }
-
-    public vehicle(string brand, string model)
-    {
-        Brand = brand;
-        Model = model;
-    }
-
-    public abstract double CalculateRentalCost(int days);
-    public virtual void DisplayInfo(string brand, string model)
-    {
-        Console.WriteLine($"Vehicle: {brand} {model}");
-    }
-
+    public int Id { get; set; }
+    public string CustomerEmail { get; set; }
+    public decimal TotalAmount { get; set; }
+    public string ShippingType { get; set; } 
+    public bool IsValid { get; set; }
 }
 
-class Car : vehicle
+
+public abstract class Discount
 {
-    int numberOfDoors;
-    public override double price { get; }
-
-    public Car(string brand, string model, double price, int numberOfDoors) : base(brand, model)
+    public virtual decimal Apply(decimal price)
     {
-        this.price = price;
-        this.numberOfDoors = numberOfDoors;
-    }
-
-    public override double CalculateRentalCost(int days)
-    {
-        return price * days;
+        return price;
     }
 }
 
-class Motorcycle : vehicle
+public class PercentageDiscount : Discount
 {
-    string colour;
-    public override double price { get; }
+    private readonly decimal _percentage;
 
-    public Motorcycle(string brand, string model, double price, string colour) : base(brand, model)
+    public PercentageDiscount(decimal percentage)
     {
-        this.price = price;
-        this.colour = colour;
+        _percentage = percentage;
     }
 
-    public override double CalculateRentalCost(int days)
+    public override decimal Apply(decimal price)
     {
-        return price * days;
+        return price - (price * _percentage);
     }
 }
 
-class truck : vehicle
+public class NoDiscount : Discount
 {
-    double loadCapacity;
-    public override double price { get; }
-
-    public truck(string brand, string model, double price, double loadCapacity) : base(brand, model)
+    public override decimal Apply(decimal price)
     {
-        this.price = price;
-        this.loadCapacity = loadCapacity;
-    }
-
-    public override double CalculateRentalCost(int days)
-    {
-        return price * days;
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Car car = new Car("hundyai", "elantera", 50, 4);
-        Motorcycle motorcycle = new Motorcycle("Honda", "race", 30, "Red");
-        truck truck = new truck("Ford", "na2l", 80, 1000);
-
-        Console.WriteLine($"Car Rental Cost for 3 days: ${car.CalculateRentalCost(3)}");
-        Console.WriteLine($"Motorcycle Rental Cost for 2 days: ${motorcycle.CalculateRentalCost(2)}");
-        Console.WriteLine($"Truck Rental Cost for 5 days: ${truck.CalculateRentalCost(5)}");
-
-        car.DisplayInfo(car.Brand, car.Model);
-        motorcycle.DisplayInfo(motorcycle.Brand, motorcycle.Model);
-        truck.DisplayInfo(truck.Brand, truck.Model);
+        return price; 
     }
 }
