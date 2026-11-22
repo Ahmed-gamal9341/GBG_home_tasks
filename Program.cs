@@ -1,51 +1,88 @@
-﻿class Student
+﻿abstract class vehicle
 {
-    public string Name { get; set; }
-    public List<int> Scores { get; set; }
+    public string Brand { get; set; }
+    public string Model { get; set; }
+    public abstract double price { get; }
 
-    public int GetAverageScore(List<int> Scores)
+    public vehicle(string brand, string model)
     {
-        if (Scores == null || Scores.Count == 0)
-            return 0;
-
-        int total = 0;
-        foreach (var score in Scores)
-        {
-            total += score;
-        }
-        return total / Scores.Count;
+        Brand = brand;
+        Model = model;
     }
 
-    public string GetLetterGrade()
+    public abstract double CalculateRentalCost(int days);
+    public virtual void DisplayInfo(string brand, string model)
     {
-        int averageScore = GetAverageScore(Scores);
-        if (averageScore >= 90)
-            return "A";
-        else if (averageScore >= 80)
-            return "B";
-        else if (averageScore >= 70)
-            return "C";
-        else if (averageScore >= 60)
-            return "D";
-        else
-            return "F";
+        Console.WriteLine($"Vehicle: {brand} {model}");
     }
 
-    public void PrintStudentInfo()
+}
+
+class Car : vehicle
+{
+    int numberOfDoors;
+    public override double price { get; }
+
+    public Car(string brand, string model, double price, int numberOfDoors) : base(brand, model)
     {
-        Console.WriteLine($"Name: {Name}");
-        Console.WriteLine($"Average Score: {GetAverageScore(Scores)}");
-        Console.WriteLine($"Letter Grade: {GetLetterGrade()}");
+        this.price = price;
+        this.numberOfDoors = numberOfDoors;
     }
 
-    public static void Main(string[] args)
+    public override double CalculateRentalCost(int days)
     {
-        Student student = new Student
-        {
-            Name = "Ahmed Gamal",
-            Scores = new List<int> { 85, 92, 78, 90 }
-        };
+        return price * days;
+    }
+}
 
-        student.PrintStudentInfo();
+class Motorcycle : vehicle
+{
+    string colour;
+    public override double price { get; }
+
+    public Motorcycle(string brand, string model, double price, string colour) : base(brand, model)
+    {
+        this.price = price;
+        this.colour = colour;
+    }
+
+    public override double CalculateRentalCost(int days)
+    {
+        return price * days;
+    }
+}
+
+class truck : vehicle
+{
+    double loadCapacity;
+    public override double price { get; }
+
+    public truck(string brand, string model, double price, double loadCapacity) : base(brand, model)
+    {
+        this.price = price;
+        this.loadCapacity = loadCapacity;
+    }
+
+    public override double CalculateRentalCost(int days)
+    {
+        return price * days;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Car car = new Car("hundyai", "elantera", 50, 4);
+        Motorcycle motorcycle = new Motorcycle("Honda", "race", 30, "Red");
+        truck truck = new truck("Ford", "na2l", 80, 1000);
+
+        Console.WriteLine($"Car Rental Cost for 3 days: ${car.CalculateRentalCost(3)}");
+        Console.WriteLine($"Motorcycle Rental Cost for 2 days: ${motorcycle.CalculateRentalCost(2)}");
+        Console.WriteLine($"Truck Rental Cost for 5 days: ${truck.CalculateRentalCost(5)}");
+
+        car.DisplayInfo(car.Brand, car.Model);
+        motorcycle.DisplayInfo(motorcycle.Brand, motorcycle.Model);
+        truck.DisplayInfo(truck.Brand, truck.Model);
     }
 }
